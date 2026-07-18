@@ -1,0 +1,539 @@
+/* ==========================================================================
+   MediaVerse — Dark Cinematic Design System
+   File statis, di-load lewat <link>, terpisah dari pipeline Vite/Tailwind
+   ========================================================================== */
+
+:root {
+    --bg-primary: #0d0f14;
+    --bg-surface: #1a1d24;
+    --bg-surface-hover: #242830;
+    --accent-gold: #f5c518;
+    --accent-gold-dark: #d4a915;
+    --text-primary: #f5f5f5;
+    --text-secondary: #9ca3af;
+    --border-subtle: #2d3138;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --navy-deep: #0b1f3a;
+}
+
+/* ---------- Base ---------- */
+body {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary);
+    font-family: "Figtree", "Inter", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--accent-gold-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ---------- Navbar ---------- */
+.navbar,
+nav.bg-white {
+    background-color: var(--bg-surface) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+}
+nav.bg-white a,
+nav.bg-white .text-gray-500,
+nav.bg-white .text-gray-800 {
+    color: var(--text-primary) !important;
+}
+nav .border-transparent:hover {
+    border-color: var(--accent-gold) !important;
+}
+
+/* ---------- Header page (x-slot name="header") ---------- */
+header.bg-white {
+    background-color: var(--bg-surface) !important;
+    border-bottom: 1px solid var(--border-subtle);
+}
+header.bg-white h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 12px !important;
+    color: var(--text-primary);
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-gold) !important;
+}
+.card-footer {
+    background-color: transparent !important;
+    border-top: 1px solid var(--border-subtle) !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn-warning {
+    background-color: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+    color: #1a1a1a !important;
+    font-weight: 600;
+}
+.btn-warning:hover {
+    background-color: var(--accent-gold-dark) !important;
+    border-color: var(--accent-gold-dark) !important;
+}
+.btn-outline-warning {
+    color: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+}
+.btn-outline-warning:hover {
+    background-color: var(--accent-gold) !important;
+    color: #1a1a1a !important;
+}
+.btn-outline-danger:hover {
+    background-color: var(--danger) !important;
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-primary) !important;
+}
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--bg-surface) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(245, 197, 24, 0.25) !important;
+}
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+/* ---------- Tables ---------- */
+.table-dark {
+    --bs-table-bg: var(--bg-surface);
+    --bs-table-striped-bg: var(--bg-surface-hover);
+    --bs-table-border-color: var(--border-subtle);
+}
+.table-dark th {
+    color: var(--accent-gold);
+    font-weight: 600;
+    border-bottom-width: 2px;
+}
+
+/* ---------- Badges ---------- */
+.badge.bg-secondary {
+    background-color: var(--bg-surface-hover) !important;
+    color: var(--text-secondary) !important;
+}
+.badge.bg-warning {
+    background-color: var(--accent-gold) !important;
+    color: #1a1a1a !important;
+}
+.badge.bg-success {
+    background-color: var(--success) !important;
+}
+.badge.bg-danger {
+    background-color: var(--danger) !important;
+}
+
+/* ---------- Alerts / Flash Message ---------- */
+.alert-success {
+    background-color: rgba(34, 197, 94, 0.12) !important;
+    border-left: 4px solid var(--success) !important;
+    color: #86efac !important;
+    border-radius: 8px;
+}
+.alert-danger,
+.text-danger {
+    color: #fca5a5 !important;
+}
+
+/* ---------- Toast Notification (flash message global) ---------- */
+/* Root cause bug sebelumnya: alert "Ditambahkan ke favorite/watchlist." dulu
+   dirender DI DALAM <div class="container" style="margin-top:-80px"> di
+   media/show.blade.php (efek supaya konten menumpuk ke atas backdrop poster),
+   akibatnya alert ikut ketarik -80px dan menutupi logo, "Dashboard", serta
+   dropdown profil di navbar. Fix: satu toast global dipasang di
+   layouts/app.blade.php (di LUAR container manapun yang punya negative
+   margin), posisi fixed di bawah navbar, dan auto-hilang lewat animasi
+   setelah beberapa detik -> tidak lagi menghalangi elemen navbar. */
+.mv-toast {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1080;
+    max-width: 340px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    background: linear-gradient(
+        160deg,
+        rgba(34, 197, 94, 0.18),
+        rgba(26, 29, 36, 0.97)
+    );
+    border-left: 4px solid var(--success);
+    color: #d7ffe6;
+    font-weight: 500;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    animation: mv-toast-life 3.5s ease forwards;
+}
+.mv-toast-icon {
+    font-weight: 700;
+    color: var(--success);
+}
+@keyframes mv-toast-life {
+    0% {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    8% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    85% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+    }
+}
+@media (max-width: 575.98px) {
+    .mv-toast {
+        left: 16px;
+        right: 16px;
+        top: 76px;
+        max-width: none;
+    }
+}
+
+/* ---------- Pagination ---------- */
+.pagination .page-link {
+    background-color: var(--bg-surface) !important;
+    border-color: var(--border-subtle) !important;
+    color: var(--text-secondary) !important;
+}
+.pagination .page-item.active .page-link {
+    background-color: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+    color: #1a1a1a !important;
+}
+
+/* ---------- Auth Card (Login/Register Breeze) ---------- */
+.min-h-screen.bg-gray-100,
+body.bg-gray-100 {
+    background-color: var(--bg-primary) !important;
+}
+.bg-white.shadow-md,
+.bg-white.overflow-hidden {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary) !important;
+}
+
+/* ---------- Admin Sidebar Layout ---------- */
+.admin-shell {
+    display: flex;
+    min-height: calc(100vh - 64px);
+}
+.admin-sidebar {
+    width: 240px;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-subtle);
+    padding: 1.5rem 0;
+    flex-shrink: 0;
+}
+.admin-sidebar .nav-link {
+    color: var(--text-secondary);
+    padding: 0.65rem 1.5rem;
+    display: block;
+    border-left: 3px solid transparent;
+}
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    color: var(--text-primary);
+    background-color: var(--bg-surface-hover);
+    border-left-color: var(--accent-gold);
+}
+.admin-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+@media (max-width: 767.98px) {
+    .admin-shell {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        padding: 0.5rem 0;
+    }
+    .admin-sidebar .nav-link {
+        white-space: nowrap;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    .admin-sidebar .nav-link:hover,
+    .admin-sidebar .nav-link.active {
+        border-left: none;
+        border-bottom-color: var(--accent-gold);
+    }
+}
+
+/* ---------- Empty State ---------- */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+}
+
+/* ---------- Text helper ---------- */
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+/* ---------- Dashboard Space Backgrounds ---------- */
+/* Wrapper dipasang di konten dashboard (user / admin biasa / absolute admin).
+   Overlay gradasi gelap di atas foto memastikan card & teks tetap kontras
+   dan mudah dibaca, gambar cuma jadi aksen atmosfer, bukan elemen utama. */
+.dashboard-space-bg {
+    position: relative;
+    isolation: isolate;
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid var(--border-subtle);
+}
+.dashboard-space-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(
+        180deg,
+        rgba(13, 15, 20, 0.55) 0%,
+        rgba(13, 15, 20, 0.9) 100%
+    );
+}
+
+/* User — Andromeda Galaxy, nuansa biru-ungu yang tenang */
+.dashboard-space-user {
+    background-image: url("https://images.unsplash.com/photo-1614910767616-d11ce66fcb5d?auto=format&fit=crop&w=1920&q=70");
+}
+
+/* Admin biasa — Milky Way di atas siluet gunung, nuansa abu-abu membumi */
+.dashboard-space-admin {
+    background-image: url("https://images.unsplash.com/photo-1597167150787-eec249cf02ed?auto=format&fit=crop&w=1920&q=70");
+}
+
+/* Absolute Admin — Nebula Cygnus Loop, warna paling dramatis untuk role tertinggi */
+.dashboard-space-absolute {
+    background-image: url("https://images.unsplash.com/photo-1757514055001-dcf00bd64a06?auto=format&fit=crop&w=1920&q=70");
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-space-bg {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+}
+
+/* ---------- Auth Pages (Login / Register) ---------- */
+/* Root cause sebelumnya: guest.blade.php (yang benar-benar dipakai oleh
+   <x-guest-layout>, lewat App\View\Components\GuestLayout::render() ->
+   view('layouts.guest')) memakai class .auth-hero & .auth-card, tapi
+   keduanya belum pernah didefinisikan di theme.css manapun -> tampilan
+   polos, lalu ketika diisi warna gelap, label "Email"/"Password" (Breeze
+   default: text-gray-700) jadi teks gelap di atas card gelap -> invisible.
+   Fix: .auth-card sekarang PUTIH (bukan gelap) supaya teks apapun di
+   atasnya otomatis kontras, ditambah override warna navy/emas eksplisit
+   sesuai tema brand. .auth-hero pakai foto langit sore asli (Unsplash). */
+.auth-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(11, 31, 58, 0.3) 0%,
+            rgba(11, 31, 58, 0.58) 100%
+        ),
+        url("https://images.unsplash.com/photo-1612198619563-a3a31fd47e6d?auto=format&fit=crop&w=1920&q=70")
+            center center / cover no-repeat fixed;
+}
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: #ffffff;
+    border: 1px solid rgba(245, 197, 24, 0.45);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 20px 45px rgba(11, 31, 58, 0.35);
+    color: var(--navy-deep);
+}
+/* Label ("Email", "Password", dst) & link jadi biru tua tegas di atas putih */
+.auth-card label {
+    color: var(--navy-deep);
+    font-weight: 700;
+}
+.auth-card a {
+    color: var(--navy-deep);
+    font-weight: 600;
+}
+.auth-card a:hover {
+    color: var(--accent-gold-dark);
+}
+/* Tombol submit (Login/Register/dst pakai <x-primary-button>, default abu Breeze) -> emas */
+.auth-card button[type="submit"] {
+    background-color: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--navy-deep) !important;
+    font-weight: 700;
+}
+.auth-card button[type="submit"]:hover,
+.auth-card button[type="submit"]:focus {
+    background-color: var(--accent-gold-dark) !important;
+    border-color: var(--accent-gold-dark) !important;
+}
+.auth-card input[type="text"],
+.auth-card input[type="email"],
+.auth-card input[type="password"] {
+    background-color: #ffffff;
+    color: var(--navy-deep);
+}
+.auth-card input:focus {
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 0 0.2rem rgba(245, 197, 24, 0.3) !important;
+}
+@media (max-width: 575.98px) {
+    .auth-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+}
+
+/* ---------- Brand Logo (teks "MediaVerse" pengganti logo Laravel) ---------- */
+.brand-logo {
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+}
+.brand-logo-media {
+    color: var(--navy-deep);
+}
+.brand-logo-verse {
+    color: var(--accent-gold);
+}
+/* Di navbar background-nya gelap (--bg-surface) -> "Media" biru tua asli nyaris
+   tak kebaca, jadi dipakai varian biru yang lebih terang khusus di konteks ini */
+.navbar .brand-logo-media,
+nav.bg-white .brand-logo-media {
+    color: #5b9bf0;
+}
+/* Di auth-hero, logo duduk di atas foto (variasi terang/gelap) -> kasih text-shadow
+   supaya tetap kebaca di bagian manapun dari foto */
+.auth-hero .brand-logo {
+    text-shadow: 0 2px 10px rgba(11, 15, 20, 0.55);
+}
+
+/* ---------- Profile Dropdown (trigger + panel) ---------- */
+/* Root cause: komponen dropdown Breeze bawaan pakai bg-white + text-gray-700,
+   dirancang untuk tema terang. theme.css sebelumnya cuma override WARNA TEKS
+   navbar jadi putih (nav.bg-white .text-gray-500 dsb), tapi BACKGROUND tombol
+   & panel dropdown tetap putih bawaan Tailwind -> teks putih di atas putih
+   (invisible). Fix di bawah menutup celah itu dengan set background eksplisit. */
+
+/* Tombol trigger "Nama User ⌄" di navbar */
+nav.bg-white button.bg-white {
+    background: linear-gradient(160deg, #0b1f3a 0%, #0c2b22 100%) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px !important;
+}
+nav.bg-white button.bg-white:hover {
+    color: var(--accent-gold) !important;
+}
+
+/* Panel dropdown (Profile / Dashboard Admin / Log Out) */
+.ring-1.ring-black.ring-opacity-5 {
+    background: linear-gradient(160deg, #0b1f3a 0%, #0c2b22 100%) !important;
+    border: 1px solid var(--border-subtle) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5) !important;
+}
+.ring-1.ring-black.ring-opacity-5 a {
+    color: var(--text-primary) !important;
+    background-color: transparent !important;
+}
+.ring-1.ring-black.ring-opacity-5 a:hover,
+.ring-1.ring-black.ring-opacity-5 a:focus {
+    background-color: rgba(245, 197, 24, 0.14) !important;
+    color: var(--accent-gold) !important;
+}
+
+/* ---------- Detail Media Backdrop (ala Letterboxd) ---------- */
+.media-backdrop {
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+}
+.media-backdrop-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 20%;
+    filter: blur(4px) brightness(0.5);
+    transform: scale(1.05);
+}
+.media-backdrop-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 15, 20, 0.2) 0%,
+        var(--bg-primary) 95%
+    );
+}
+.media-back-btn {
+    position: absolute;
+    top: 76px;
+    left: 24px;
+    z-index: 5;
+}
