@@ -67,7 +67,7 @@ _Background langit sore, form dengan aksen navy & emas_
 ![Login/Register](docs/screenshots/login%20register.png)
 
 ### Tampilan Media
-_Katalog media, filter pencarian, dan poster / key visual
+_Katalog media, filter pencarian, dan poster / key visual_
 ![Tampilan Media](docs/screenshots/tampilan%20media.png)
 
 ### Detail Media
@@ -99,7 +99,7 @@ _Statistik total media/user/review, sidebar navigasi ke seluruh modul manajemen_
 - Diarahkan ke Login/Register saat mencoba Watchlist/Favorite/Review/Komentar
 
 ### 🙋 User (Terdaftar)
-Semua hak Guest, ditambah:
+Semua hak Guest, ditambah :
 - Registrasi, Login/Logout, reset & ubah password
 - Kelola profil (nama, email), hapus akun sendiri (wajib konfirmasi ulang password)
 - Upload foto profil (avatar), auto-fit ke card profil
@@ -109,7 +109,7 @@ Semua hak Guest, ditambah:
 - Lihat profil publik user lain (`/u/{user}`) dan tinggalkan komentar (guestbook)
 
 ### 🛠️ Admin
-Semua hak User, ditambah:
+Semua hak User, ditambah :
 - Akses Dashboard Admin (sidebar navigasi terpisah)
 - CRUD Media (termasuk upload poster, penentuan studio & genre)
 - CRUD Genre
@@ -117,7 +117,7 @@ Semua hak User, ditambah:
 - Lihat statistik: total media, total user, total review, 5 review terbaru platform
 
 ### 👑 Absolute Admin (Super Admin)
-Semua hak Admin, ditambah:
+Semua hak Admin, ditambah :
 - Manajemen User: menaikkan/menurunkan role User ↔ Admin
 - Mengaktifkan/menonaktifkan akun user/admin lain
 - Akun Absolute Admin sendiri **tidak dapat diubah oleh siapa pun** lewat UI (safety rule, hanya bisa dibuat lewat seeder)
@@ -145,13 +145,13 @@ Semua hak Admin, ditambah:
 
 | Kategori | Teknologi |
 |---|---|
-| Backend | Laravel 13 (PHP 8.3) |
+| Backend | Laravel 13 (PHP 8.3.31) |
 | Frontend | Blade Templating, Bootstrap 5.3.3 (CDN), TailwindCSS, Alpine.js |
 | Build Tool | Vite |
-| Database | MySQL 8.0 |
+| Database | MySQL 8.0.30 |
 | Autentikasi | Laravel Breeze (session-based) |
 | Testing | PHPUnit (Laravel Feature Test) |
-| Local Dev | Laragon (Nginx + PHP 8.3 + MySQL) |
+| Local Dev | Laragon (Nginx 1.22.0 + PHP 8.3.31 + MySQL) |
 | Containerization | Docker (untuk deployment) |
 
 ---
@@ -180,10 +180,10 @@ Diagram ERD lengkap tersedia di [`docs/PRD Final - MediaVerse.pdf`](docs/PRD%20F
 
 Pastikan sudah terpasang sebelum instalasi:
 
-- **PHP** 8.3 atau lebih baru, dengan ekstensi `pdo_mysql`, `mbstring`, `fileinfo`, `gd`
+- **PHP** 8.3.31 atau lebih baru, dengan ekstensi `pdo_mysql`, `mbstring`, `fileinfo`, `gd`
 - **Composer** 2.x
 - **Node.js** 20+ dan **npm**
-- **MySQL** 8.0+
+- **MySQL** 8.0.30+
 - Web server lokal (disarankan **Laragon** untuk Windows, atau setara seperti XAMPP/Valet)
 
 ---
