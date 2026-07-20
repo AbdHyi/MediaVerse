@@ -10,7 +10,7 @@
 ![Breeze](https://img.shields.io/badge/Auth-Laravel%20Breeze-FF2D20?logo=laravel&logoColor=white)
 ![License](https://img.shields.io/badge/Tugas%20Kuliah-UAS%20P.%20Web%202-8B5CF6?style=flat-square)
 
-![MediaVerse Landing Page](#1%20docs/screenshots/landing-page.png)
+![MediaVerse Landing Page](docs/screenshots/landing-page.png)
 
 </div>
 
@@ -64,19 +64,19 @@ Project ini dikembangkan sebagai submisi **UAS Mata Kuliah Pemrograman Web 2**, 
 
 ### Login & Register
 _Background langit sore, form dengan aksen navy & emas_
-![Login/Register](#1%20docs/screenshots/login-register.png)
+![Login/Register](docs/screenshots/login-register.png)
 
 ### Detail Media
 _Sinopsis, rating, tombol Watchlist/Favorite, dan daftar review — inti fitur aplikasi_
-![Detail Media](#1%20docs/screenshots/detail-media.png)
+![Detail Media](docs/screenshots/detail-media.png)
 
 ### Dashboard User
 _Avatar profil, watchlist terbaru, favorite carousel, review terakhir, dan kolom komentar_
-![Dashboard User](#1%20docs/screenshots/dashboard-user.png)
+![Dashboard User](docs/screenshots/dashboard-user.png)
 
 ### Dashboard Admin
 _Statistik total media/user/review, sidebar navigasi ke seluruh modul manajemen_
-![Dashboard Admin](#1%20docs/screenshots/dashboard-admin.png)
+![Dashboard Admin](docs/screenshots/dashboard-admin.png)
 
 </details>
 
