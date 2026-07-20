@@ -10,7 +10,7 @@
 ![Breeze](https://img.shields.io/badge/Auth-Laravel%20Breeze-FF2D20?logo=laravel&logoColor=white)
 ![License](https://img.shields.io/badge/Tugas%20Kuliah-UAS%20P.%20Web%202-8B5CF6?style=flat-square)
 
-![MediaVerse Landing Page](docs/screenshots/landing-page.png)
+![MediaVerse Landing Page](#1%20docs/screenshots/landing-page.png)
 
 </div>
 
@@ -43,8 +43,10 @@
 
 ## 📖 Tentang Project
 
+### Latar Belakang Masalah
 Penggemar tontonan visual selama ini harus berpindah-pindah platform yang terpisah untuk masing-masing kategori — satu platform untuk film, platform lain untuk anime, dan platform lain lagi untuk series — sehingga pengalaman mencatat tontonan, memberi rating, dan menulis review menjadi terfragmentasi.
 
+### Target pengguna
 **MediaVerse** hadir sebagai satu platform terintegrasi yang mewadahi ketiga kategori tersebut (Film, TV Series, dan Anime) sekaligus, lengkap dengan fitur **watchlist**, **favorite**, dan **review** pengguna — ditargetkan untuk mahasiswa dan pecinta film/series/anime yang menginginkan satu platform terpadu untuk menelusuri katalog, mencatat tontonan, serta berbagi rating dan review lintas kategori media.
 
 Project ini dikembangkan sebagai submisi **UAS Mata Kuliah Pemrograman Web 2**, dibangun dari nol mengikuti alur kerja terstruktur mulai dari Discovery, Product Design, Database Design, Backend Architecture, Frontend, Feature Development, Testing, UI Polish, hingga Deployment.
@@ -62,23 +64,21 @@ Project ini dikembangkan sebagai submisi **UAS Mata Kuliah Pemrograman Web 2**, 
 
 ### Login & Register
 _Background langit sore, form dengan aksen navy & emas_
-![Login/Register](docs/screenshots/login-register.png)
+![Login/Register](#1%20docs/screenshots/login-register.png)
 
 ### Detail Media
 _Sinopsis, rating, tombol Watchlist/Favorite, dan daftar review — inti fitur aplikasi_
-![Detail Media](docs/screenshots/detail-media.png)
+![Detail Media](#1%20docs/screenshots/detail-media.png)
 
 ### Dashboard User
 _Avatar profil, watchlist terbaru, favorite carousel, review terakhir, dan kolom komentar_
-![Dashboard User](docs/screenshots/dashboard-user.png)
+![Dashboard User](#1%20docs/screenshots/dashboard-user.png)
 
 ### Dashboard Admin
 _Statistik total media/user/review, sidebar navigasi ke seluruh modul manajemen_
-![Dashboard Admin](docs/screenshots/dashboard-admin.png)
+![Dashboard Admin](#1%20docs/screenshots/dashboard-admin.png)
 
 </details>
-
-> **Catatan:** letakkan file screenshot final di `docs/screenshots/` dengan nama file sesuai di atas agar seluruh gambar tampil otomatis di README ini.
 
 ---
 
