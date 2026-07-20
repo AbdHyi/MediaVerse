@@ -66,6 +66,10 @@ Project ini dikembangkan sebagai submisi **UAS Mata Kuliah Pemrograman Web 2**, 
 _Background langit sore, form dengan aksen navy & emas_
 ![Login/Register](docs/screenshots/login%20register.png)
 
+### Tampilan Media
+_Katalog media, filter pencarian, dan poster / key visual
+![Tampilan Media](docs/screenshots/tampilan%20media.png)
+
 ### Detail Media
 _Sinopsis, rating, tombol Watchlist/Favorite, dan daftar review — inti fitur aplikasi_
 ![Detail Media](docs/screenshots/detail%20media.png)
@@ -74,7 +78,11 @@ _Sinopsis, rating, tombol Watchlist/Favorite, dan daftar review — inti fitur a
 _Avatar profil, watchlist terbaru, favorite carousel, review terakhir, dan kolom komentar_
 ![Dashboard User](docs/screenshots/dashboard%20user.png)
 
-### Dashboard Admin
+### Dashboard biasa Absolute Admin
+_Avatar profil, watchlist terbaru, favorite carousel, review terakhir, dan kolom komentar_
+![Dashboard User](docs/screenshots/dashboard%20biasa%20absolute%20admin.png)
+
+### Dashboard Absolute Admin
 _Statistik total media/user/review, sidebar navigasi ke seluruh modul manajemen_
 ![Dashboard Admin](docs/screenshots/dashboard%20admin.png)
 
