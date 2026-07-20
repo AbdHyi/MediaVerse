@@ -69,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   KEY `favorites_media_id_foreign` (`media_id`),
   CONSTRAINT `favorites_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE,
   CONSTRAINT `favorites_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.favorites: ~0 rows (approximately)
+-- Dumping data for table mediaverse.favorites: ~6 rows (approximately)
 INSERT INTO `favorites` (`id`, `user_id`, `media_id`, `created_at`, `updated_at`) VALUES
 	(1, 4, 19, '2026-07-16 18:23:22', '2026-07-16 18:23:22'),
 	(2, 2, 19, '2026-07-17 10:16:03', '2026-07-17 10:16:03'),
@@ -80,7 +80,10 @@ INSERT INTO `favorites` (`id`, `user_id`, `media_id`, `created_at`, `updated_at`
 	(5, 4, 22, '2026-07-17 23:30:17', '2026-07-17 23:30:17'),
 	(6, 4, 12, '2026-07-17 23:31:14', '2026-07-17 23:31:14'),
 	(7, 1, 10, '2026-07-17 23:52:18', '2026-07-17 23:52:18'),
-	(8, 2, 10, '2026-07-18 02:07:57', '2026-07-18 02:07:57');
+	(8, 2, 10, '2026-07-18 02:07:57', '2026-07-18 02:07:57'),
+	(9, 2, 3, '2026-07-18 08:24:50', '2026-07-18 08:24:50'),
+	(10, 2, 7, '2026-07-18 21:46:34', '2026-07-18 21:46:34'),
+	(11, 2, 23, '2026-07-20 04:36:47', '2026-07-20 04:36:47');
 
 -- Dumping structure for table mediaverse.genres
 CREATE TABLE IF NOT EXISTS `genres` (
@@ -90,9 +93,9 @@ CREATE TABLE IF NOT EXISTS `genres` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `genres_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.genres: ~8 rows (approximately)
+-- Dumping data for table mediaverse.genres: ~26 rows (approximately)
 INSERT INTO `genres` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(1, 'Action', '2026-07-14 08:08:35', '2026-07-14 08:08:35'),
 	(2, 'Adventure', '2026-07-14 08:08:35', '2026-07-14 08:08:35'),
@@ -102,7 +105,24 @@ INSERT INTO `genres` (`id`, `name`, `created_at`, `updated_at`) VALUES
 	(7, 'Thriller', '2026-07-14 22:46:58', '2026-07-14 22:46:58'),
 	(8, 'Romance', '2026-07-14 22:46:58', '2026-07-14 22:46:58'),
 	(11, 'Fantasy', '2026-07-16 18:54:28', '2026-07-16 18:54:28'),
-	(12, 'Space', '2026-07-17 10:33:05', '2026-07-17 10:33:05');
+	(12, 'Space', '2026-07-17 10:33:05', '2026-07-17 10:33:05'),
+	(13, 'Mystery', '2026-07-20 04:29:29', '2026-07-20 04:29:29'),
+	(14, 'Slice of Life', '2026-07-20 04:29:36', '2026-07-20 04:29:36'),
+	(15, 'Sports', '2026-07-20 04:29:48', '2026-07-20 04:29:48'),
+	(16, 'Suspense', '2026-07-20 04:29:53', '2026-07-20 04:29:53'),
+	(17, 'Martial Arts', '2026-07-20 04:30:14', '2026-07-20 04:30:14'),
+	(18, 'Mecha', '2026-07-20 04:30:21', '2026-07-20 04:30:21'),
+	(19, 'Shounen', '2026-07-20 04:30:27', '2026-07-20 04:30:27'),
+	(20, 'Seinen', '2026-07-20 04:30:33', '2026-07-20 04:30:33'),
+	(21, 'Parody', '2026-07-20 04:30:41', '2026-07-20 04:30:41'),
+	(22, 'Military', '2026-07-20 04:30:54', '2026-07-20 04:30:54'),
+	(23, 'Psychological', '2026-07-20 04:31:09', '2026-07-20 04:31:09'),
+	(24, 'Samurai', '2026-07-20 04:31:19', '2026-07-20 04:31:19'),
+	(25, 'School', '2026-07-20 04:31:26', '2026-07-20 04:31:26'),
+	(26, 'Time Travel', '2026-07-20 04:31:46', '2026-07-20 04:31:46'),
+	(27, 'Josei', '2026-07-20 04:31:54', '2026-07-20 04:31:54'),
+	(28, 'Shoujo', '2026-07-20 04:31:59', '2026-07-20 04:31:59'),
+	(29, 'Avant Garde', '2026-07-20 04:32:51', '2026-07-20 04:32:51');
 
 -- Dumping structure for table mediaverse.jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -155,9 +175,9 @@ CREATE TABLE IF NOT EXISTS `media` (
   KEY `media_type_index` (`type`),
   KEY `media_release_year_index` (`release_year`),
   CONSTRAINT `media_studio_id_foreign` FOREIGN KEY (`studio_id`) REFERENCES `studios` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.media: ~12 rows (approximately)
+-- Dumping data for table mediaverse.media: ~15 rows (approximately)
 INSERT INTO `media` (`id`, `studio_id`, `title`, `slug`, `type`, `synopsis`, `release_year`, `poster_path`, `created_at`, `updated_at`) VALUES
 	(1, 1, 'Spirited Away', 'spirited-away', 'anime', 'Sinopsis dummy untuk Spirited Away.', 2001, 'posters/zfgH0IJHomrvC04dIfTXOlWcoXk1eC8EbAE6Z1QC.jpg', '2026-07-14 08:08:35', '2026-07-17 10:28:53'),
 	(2, 1, 'Inception', 'inception', 'film', 'Sinopsis dummy untuk Inception.', 2010, 'posters/N8o3n67KSf5CC1zi6w10uUduCQcitpZ3UAiHTB8B.jpg', '2026-07-14 08:08:36', '2026-07-17 19:54:25'),
@@ -172,7 +192,8 @@ INSERT INTO `media` (`id`, `studio_id`, `title`, `slug`, `type`, `synopsis`, `re
 	(11, 5, 'K-On!', 'k-on', 'anime', 'Sinopsis dummy untuk K-On!. Konten ini akan diganti dengan sinopsis asli.', 2009, 'posters/KUQ9PlOpf1gQt8wT7RxWzDYfSueSmGbREkbR4JJi.jpg', '2026-07-14 22:46:59', '2026-07-17 19:53:25'),
 	(12, 5, 'A Silent Voice', 'a-silent-voice', 'anime', 'Sinopsis dummy untuk A Silent Voice. Konten ini akan diganti dengan sinopsis asli.', 2016, 'posters/Jc9nzkH3JYlgh68cC9EE1IjvjlMjxTLwhBLYy0rp.jpg', '2026-07-14 22:46:59', '2026-07-17 10:23:55'),
 	(19, 1, 'Kaze Tachinu', 'kaze-tachinu', 'anime', 'Meskipun rabun jauh Jirou Horikoshi mencegahnya untuk menjadi pilot, ia meninggalkan kota kelahirannya untuk belajar teknik penerbangan di Universitas Kekaisaran Tokyo dengan satu tujuan sederhana: untuk merancang dan membangun pesawat seperti pahlawannya, pelopor pesawat terbang Italia Giovanni Battista Caproni.Kedatangannya di ibu kota bertepatan dengan Gempa Besar Kanto tahun 1923, di mana ia menyelamatkan seorang pelayan yang bekerja untuk keluarga seorang gadis muda bernama Naoko Satomi; peristiwa mengerikan ini menandai awal dari lebih dari dua dekade keresahan dan keresahan sosial yang berujung pada penyerahan Jepang dalam Perang Dunia II.\r\n\r\nBagi Jirou, tahun-tahun menjelang produksi pesawat tempur Mitsubishi A6M Zero yang terkenal itu akan menguji setiap serat dalam dirinya. Banyak perjalanan dan pengalaman hidupnya hanya mendorongnya maju—bahkan ketika ia menyadari peran ciptaannya dalam perang dan kenyataan pahit kehidupan pribadinya. Seiring berjalannya waktu, ia harus menghadapi pertanyaan yang mustahil: dengan harga berapa ia mengejar mimpinya yang indah?', 2013, 'posters/J6ocOx6ekhRGVYDhq1GNonOGxcdQYGbTX9q0S5po.jpg', '2026-07-15 08:29:46', '2026-07-15 08:29:46'),
-	(22, 5, 'Samurai Champloo', 'samurai-champloo', 'anime', 'Fuu Kasumi adalah seorang pelayan muda dan kikuk yang menghabiskan hari-harinya dengan damai bekerja di kedai teh kecil. Begitulah, sampai dia secara tidak sengaja menumpahkan minuman ke seluruh salah satu pelanggannya! Dengan sekelompok samurai yang kini tak henti-hentinya mengganggunya, Fuu dengan putus asa memanggil samurai lain di toko, Mugen, yang dengan cepat mengalahkan mereka dengan teknik bertarung liarnya, memanfaatkan gerakan yang mengingatkan pada breakdance. Sayangnya, Mugen memutuskan untuk berkelahi dengan ronin Jin yang enggan, yang menggunakan gaya adu pedang yang lebih tepat dan tradisional, dan Jin terbukti menjadi lawan yang tangguh. Satu-satunya masalah adalah, mereka akhirnya menghancurkan seluruh toko serta secara tidak sengaja membunuh putra hakim setempat.\r\n\r\nAtas kejahatan mereka, kedua samurai tersebut ditangkap dan akan dieksekusi. Namun, mereka diselamatkan oleh Fuu, yang mempekerjakan keduanya sebagai pengawalnya. Meskipun dia tidak lagi memiliki tempat untuk kembali, mantan pelayan tersebut ingin menemukan samurai tertentu yang berbau bunga matahari dan meminta bantuan dari pasangan yang sekarang dibebaskan dari tuduhan untuk melakukannya. Meskipun awalnya tidak menyetujui gagasan ini, keduanya akhirnya setuju untuk membantu gadis itu dalam pencariannya; dengan demikian, ketiganya memulai petualangan untuk menemukan prajurit misterius ini—, yaitu jika Fuu dapat mencegah Mugen dan Jin saling membunuh.\r\n\r\nDitetapkan dalam Periode Edo alternatif Jepang, Samurai Champloo mengikuti perjalanan ketiga individu eksentrik ini dalam pencarian epik yang penuh aksi, komedi, dan pertarungan pedang dinamis, semuanya diatur dengan irama soundtrack hip-hop unik yang diresapi.', 2004, 'posters/9Xl93aM6Tyl79lO6DL7MfuldkOeUuYG6YXjfuxQX.jpg', '2026-07-17 19:34:20', '2026-07-17 19:34:20');
+	(22, 8, 'Samurai Champloo', 'samurai-champloo', 'anime', 'Petualangan tiga orang asing di era Edo: Fuu (pelayan kedai teh), Mugen (penjahat jalanan yang liar), dan Jin (seorang ronin tenang). Setelah diselamatkan dari hukuman mati, mereka terikat dalam perjalanan melintasi Jepang untuk mencari "samurai yang berbau bunga matahari"', 2004, 'posters/9Xl93aM6Tyl79lO6DL7MfuldkOeUuYG6YXjfuxQX.jpg', '2026-07-17 19:34:20', '2026-07-20 04:35:50'),
+	(23, 9, 'Steins; Gate', 'steins-gate', 'anime', 'Rintarou Okabe, ilmuwan eksentrik yang haus akan penemuan, bersama Mayuri Shiina dan Itaru Hashida mendirikan Future Gadget Laboratory untuk menciptakan teknologi yang mengejutkan dunia. Meski hasil terbaik mereka hanyalah microwave yang bisa mengubah pisang menjadi bubur hijau, semuanya berubah saat Okabe tanpa sengaja menemukan bahwa alat itu dapat mengirim pesan teks ke masa lalu. Penemuan ini menyeretnya ke dalam bahaya, membuatnya berhadapan dengan organisasi misterius SERN sekaligus memaksa dirinya berjuang menyelamatkan orang-orang terdekat dan menjaga kewarasan saat garis waktu mulai kacau.', 2011, 'posters/oZjWTLR0WjvDWSUPcLJzYAfrrPfV2lf8wBG954qK.jpg', '2026-07-20 04:26:38', '2026-07-20 04:33:41');
 
 -- Dumping structure for table mediaverse.media_genres
 CREATE TABLE IF NOT EXISTS `media_genres` (
@@ -184,9 +205,9 @@ CREATE TABLE IF NOT EXISTS `media_genres` (
   KEY `media_genres_genre_id_foreign` (`genre_id`),
   CONSTRAINT `media_genres_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE CASCADE,
   CONSTRAINT `media_genres_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.media_genres: ~33 rows (approximately)
+-- Dumping data for table mediaverse.media_genres: ~42 rows (approximately)
 INSERT INTO `media_genres` (`id`, `media_id`, `genre_id`) VALUES
 	(1, 1, 1),
 	(9, 1, 2),
@@ -223,7 +244,15 @@ INSERT INTO `media_genres` (`id`, `media_id`, `genre_id`) VALUES
 	(40, 19, 3),
 	(47, 22, 1),
 	(48, 22, 2),
-	(49, 22, 4);
+	(49, 22, 4),
+	(56, 22, 17),
+	(57, 22, 24),
+	(50, 23, 3),
+	(51, 23, 6),
+	(52, 23, 7),
+	(54, 23, 16),
+	(53, 23, 23),
+	(55, 23, 26);
 
 -- Dumping structure for table mediaverse.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -233,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.migrations: ~4 rows (approximately)
+-- Dumping data for table mediaverse.migrations: ~13 rows (approximately)
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '0001_01_01_000000_create_users_table', 1),
 	(2, '0001_01_01_000001_create_cache_table', 1),
@@ -290,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   KEY `reviews_media_id_foreign` (`media_id`),
   CONSTRAINT `reviews_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE,
   CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table mediaverse.reviews: ~13 rows (approximately)
 INSERT INTO `reviews` (`id`, `user_id`, `media_id`, `rating`, `review_text`, `created_at`, `updated_at`) VALUES
@@ -300,7 +329,7 @@ INSERT INTO `reviews` (`id`, `user_id`, `media_id`, `rating`, `review_text`, `cr
 	(4, 2, 2, 7, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
 	(5, 2, 5, 7, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
 	(6, 2, 6, 10, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
-	(7, 2, 7, 10, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
+	(7, 2, 7, 10, 'Review dummy dari admin untuk keperluan testing tampilan rating. update', '2026-07-14 22:46:59', '2026-07-18 21:46:58'),
 	(8, 2, 3, 7, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
 	(9, 2, 8, 10, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
 	(10, 2, 9, 9, 'Review dummy dari admin untuk keperluan testing tampilan rating.', '2026-07-14 22:46:59', '2026-07-14 22:46:59'),
@@ -312,7 +341,8 @@ INSERT INTO `reviews` (`id`, `user_id`, `media_id`, `rating`, `review_text`, `cr
 	(16, 2, 19, 10, 'Engineer??? I\'m in', '2026-07-17 10:16:26', '2026-07-17 10:16:26'),
 	(17, 4, 10, 9, 'Beautiful', '2026-07-17 10:31:04', '2026-07-17 10:31:04'),
 	(18, 2, 22, 10, 'In the name of Samurai! ..... "Son of battlecry"', '2026-07-17 19:56:48', '2026-07-17 19:56:48'),
-	(19, 1, 10, 10, '"What\'s is love" god damn, broo', '2026-07-17 23:52:44', '2026-07-17 23:52:44');
+	(19, 1, 10, 10, '"What\'s is love" god damn, broo', '2026-07-17 23:52:44', '2026-07-17 23:52:44'),
+	(20, 2, 23, 10, 'Peak; Gate , plot twist at its PEAK', '2026-07-20 04:37:17', '2026-07-20 04:37:17');
 
 -- Dumping structure for table mediaverse.sessions
 CREATE TABLE IF NOT EXISTS `sessions` (
@@ -327,9 +357,11 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.sessions: ~5 rows (approximately)
+-- Dumping data for table mediaverse.sessions: ~3 rows (approximately)
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('9RtR3RlU82vQJFcE3ZoqXb4jNnoUVN7gz8TZM7sJ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJ2ZGJ2UDdPbW93dTlHT0hIYjRJeUlBYjJBVHBBc3IwUjYzMUVmQTdoIiwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvbWVkaWF2ZXJzZS50ZXN0XC9tZWRpYSIsInJvdXRlIjoibWVkaWEuaW5kZXgifSwibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiOjR9', 1784371623);
+	('T6WlleQkEpH5ZRtP9Xso2rJbJEWxfg5ExIHD2Jng', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJNSTJWM2FsRWRyZXM4cWpJa2l3VXlkeFRDUU8yR1lac2RTdXllbHJkIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL21lZGlhdmVyc2UudGVzdCIsInJvdXRlIjoiaG9tZSJ9LCJfZmxhc2giOnsib2xkIjpbXSwibmV3IjpbXX19', 1784549014),
+	('WrhCBjQoCajnyJuRjY7H8n5e2nNeJVR7xwlCMjAf', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJjMkVNaEtNU1JvQW80bUtuZDdRUXAzQ2poZ1Jlc05SVUlPWFo2cmpCIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL21lZGlhdmVyc2UudGVzdFwvbWVkaWFcL3ByaW5jZXNzLW1vbm9ub2tlIiwicm91dGUiOiJtZWRpYS5zaG93In0sIl9mbGFzaCI6eyJvbGQiOltdLCJuZXciOltdfSwibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiOjJ9', 1784551300),
+	('zv6emaS3oTeEE17aH3ArBeNFCwIfZX9uamIoCB9y', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJ4Z2xUSzI0WEZGQWVEV0Q1YzYwbUpXOHNxOERUZmljZ0MxRDJ4cEpjIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cL21lZGlhdmVyc2UudGVzdCIsInJvdXRlIjoiaG9tZSJ9LCJfZmxhc2giOnsib2xkIjpbXSwibmV3IjpbXX19', 1784549014);
 
 -- Dumping structure for table mediaverse.studios
 CREATE TABLE IF NOT EXISTS `studios` (
@@ -340,9 +372,9 @@ CREATE TABLE IF NOT EXISTS `studios` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `studios_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.studios: ~4 rows (approximately)
+-- Dumping data for table mediaverse.studios: ~9 rows (approximately)
 INSERT INTO `studios` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
 	(1, 'Studio Ghibli', NULL, '2026-07-14 08:08:35', '2026-07-14 08:08:35'),
 	(2, 'Marvel Studios', NULL, '2026-07-14 22:46:58', '2026-07-14 22:46:58'),
@@ -350,7 +382,9 @@ INSERT INTO `studios` (`id`, `name`, `description`, `created_at`, `updated_at`) 
 	(4, 'Netflix Originals', NULL, '2026-07-14 22:46:58', '2026-07-14 22:46:58'),
 	(5, 'Kyoto Animation', NULL, '2026-07-14 22:46:58', '2026-07-14 22:46:58'),
 	(6, 'MAPPA', 'Pecahan studio dari Madhouse', '2026-07-18 02:17:38', '2026-07-18 02:17:38'),
-	(7, 'Madhouse', NULL, '2026-07-18 02:19:18', '2026-07-18 02:19:18');
+	(7, 'Madhouse', NULL, '2026-07-18 02:19:18', '2026-07-18 02:19:18'),
+	(8, 'Manglobe', NULL, '2026-07-20 04:28:17', '2026-07-20 04:28:17'),
+	(9, 'White Fox', NULL, '2026-07-20 04:28:33', '2026-07-20 04:28:33');
 
 -- Dumping structure for table mediaverse.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -369,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table mediaverse.users: ~5 rows (approximately)
+-- Dumping data for table mediaverse.users: ~4 rows (approximately)
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `is_active`, `avatar_path`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'Ane Pro', 'aneproplayer@gmail.com', NULL, '$2y$12$K3DGY6hTsM4jLvWRADWNLO.ZY9FayjiKbPgeJ6P8NeFcChv7lc6EW', 'user', 1, NULL, 'jKv6sCL673fkRHooLB9uwVYUrMP4oWuR1BpqsnJ17rbgm4pffIoMY2gzBTH4', '2026-07-11 23:12:05', '2026-07-16 05:56:01'),
 	(2, 'MediaVerse Super Admin', 'admin@mediaverse.test', '2026-07-12 23:33:17', '$2y$12$cm81vFp22JDNdxQ2vNR0eetXIEYNGxykMqACVz1BQykOk5Ca1vNce', 'absolute_admin', 1, 'avatars/BM4zGFD9pNNnViOhFnzsT9e84Ej2SzfmOCPAU4GR.jpg', NULL, '2026-07-12 23:33:18', '2026-07-18 02:37:45'),
@@ -388,7 +422,7 @@ CREATE TABLE IF NOT EXISTS `watchlists` (
   KEY `watchlists_media_id_foreign` (`media_id`),
   CONSTRAINT `watchlists_media_id_foreign` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE,
   CONSTRAINT `watchlists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table mediaverse.watchlists: ~5 rows (approximately)
 INSERT INTO `watchlists` (`id`, `user_id`, `media_id`, `created_at`, `updated_at`) VALUES
@@ -399,7 +433,11 @@ INSERT INTO `watchlists` (`id`, `user_id`, `media_id`, `created_at`, `updated_at
 	(5, 3, 3, '2026-07-17 03:33:09', '2026-07-17 03:33:09'),
 	(6, 2, 22, '2026-07-17 19:56:53', '2026-07-17 19:56:53'),
 	(7, 4, 22, '2026-07-18 00:40:54', '2026-07-18 00:40:54'),
-	(8, 2, 10, '2026-07-18 02:08:05', '2026-07-18 02:08:05');
+	(8, 2, 10, '2026-07-18 02:08:05', '2026-07-18 02:08:05'),
+	(9, 2, 1, '2026-07-18 07:49:14', '2026-07-18 07:49:14'),
+	(10, 2, 3, '2026-07-18 08:25:05', '2026-07-18 08:25:05'),
+	(11, 2, 7, '2026-07-18 21:46:17', '2026-07-18 21:46:17'),
+	(12, 2, 23, '2026-07-20 04:36:52', '2026-07-20 04:36:52');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
